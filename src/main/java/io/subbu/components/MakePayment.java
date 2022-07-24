@@ -23,7 +23,11 @@ public class MakePayment implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         OrderDto orderDto = (OrderDto) stateMachine.getExtendedState().getVariables().get(ORDER_HEADER);
-        String payment = String.valueOf(orderDto.getTotalAmount() - 1);
+        // uncomment the below line to make a payment of orderAmount -1 to trigger the ErrorAction
+        //String payment = String.valueOf(orderDto.getTotalAmount() - 1);
+        // comment this line in-case you are testing the error scenario
+        // making the exact payment as the orderAmount to move to the FulfillmentAction
+        String payment = String.valueOf(orderDto.getTotalAmount());
         Message<OrderEvents> makePaymentMessage =
                 MessageBuilder.withPayload(OrderEvents.PAY)
                         .setHeader(PAYMENT_HEADER,payment)
