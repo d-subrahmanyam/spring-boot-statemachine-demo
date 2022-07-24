@@ -1,0 +1,14 @@
+logging:
+  level:
+    org.springframework: INFO
+    org.hibernate: INFO
+    io.subbu: DEBUG
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: "jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+    username: "subbu"
+    password: "pa55ward"
+    driver-class-name: "org.h2.Driver"
